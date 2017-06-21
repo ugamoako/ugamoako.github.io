@@ -30,13 +30,29 @@
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="/" style="background-color:#1f77b4">Home</a></li><li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle">Filter<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="#">Sort </a></li></ul></li><li><a href="/summary">Table </a></li><li><a href="report.html">Report</a></li></ul><ul class="nav navbar-nav navbar-right"><li><input id="filter" type="text" placeholder="Search"><i id="filtersubmit" class="fa fa-search"></i></li><li><a href="#"><span class="glyphicon glyphicon-user">Sign Up</span></a></li><li><a href="#"><span class="glyphicon glyphicon-log-in">Login</span></a></li></ul></div></div></nav><div style="padding:10px 0 0 0" class="container"><div class="col-lg-1 col-md-1 col-sm-1"><div class="filter">Filter</div></div><div class="col-lg-3 col-md-3 col-sm-4"> <div class="form-group"><div id="datetimepicker1" class="input-group date"><input type="text" class="form-control"><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span></div></div></div><div class="col-lg-3 col-md-3 col-sm-4"> <div class="form-group"><div id="datetimepicker2" class="input-group date"><input type="text" class="form-control"><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span></div></div></div><div class="col-lg-3 col-md-3 col-sm-4"> <div class="form-group"><div class="input-group"><input id="submittext" type="text" placeholder="Enter a Phrase" class="form-control"><span class="input-group-addon"><span id="submitfilt" class="glyphicon glyphicon-search"></span></span></div></div></div><div class="col-lg-2 col-md-2 col-sm-4"></div><div class="form-group"><div class="input-group"><select id="selectcat" style="width:70px; padding:6px" class="form-control"><option value="1">At most</option><option value="2">At least</option><option value="3">top</option><option value="4">equal</option><!--option(value='5') between--></select><input id="fiterByNumber" type="number" value="20" style="width:60px; padding:6px" class="form-control"><!--input#fiterByNumber2.form-control(type='number' value='20' style='width:60px; padding:6px;')--><!--span.input-group-addonspan#submitfil.glyphicon.glyphicon-search            --></div></div></div><!--p Welcome to #{title}--><!--p it was not easy to set this up .container    
 #chart
---><div class="body">
-    <h1>Pyfia Oracle Data Visualization</h1><p>Pythia is an interactive sonic sculpture, analyzing the audience’s speech and interpreting it into 
+-->
+<h1>Pyfia Oracle Data Visualization</h1><p>Pythia is an interactive sonic sculpture, analyzing the audience’s speech and interpreting it into 
 absurd or perhaps prophetic messages, the so-called divine glitch. <a href='http://www.sonicartist.me/wp/pythia/'> Read more...</a>
 </p><P>The Visualization below represent the data collected in an eleven month period in the year 2015.
 this Visualization is interactive and the user can select in between time periods to analyse the 
 frequency in the words or phrase for such periods. Also, a single word or phrase can be looked up
 via the search boxes to visualise its existence or frequency in the oracle. Detailed report on the
 analysis of the data can be found in the report tab located in the navigation bar or click <a href='/report.jade'> here</a></P></div>
-</body>
+
+<ul class='nav nav-pills nav-justified'>
+    <li class="active"><a data-toggle="pill" href="#home">Month</a></li>
+    <li><a data-toggle="pill" href="#hierarchy">Hierarchy</a></li>
+    <li><a data-toggle="pill" href="#frequency">Frequency</a></li>
+</ul>
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <div class="body"></div>
+    </div>
+    <div id="hierarchy" class="tab-pane fade">
+      <h3>Hierarchy</h3>
+    </div>
+    <div id="frequency" class="tab-pane fade">
+      <h3>Frequency</h3>
+    </div>
+  </div>
 </html>
