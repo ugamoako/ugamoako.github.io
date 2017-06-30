@@ -11,7 +11,6 @@
         <script src="script.js"></script>
         <script src="moment-with-locales.js"></script>
         <script src="bootstrap-datetimepicker.min.js"></script>
-        <script src="https://www.w3schools.com/lib/w3.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         </head>
         <body>
@@ -49,13 +48,12 @@ analysis of the data can be found in the report tab located in the navigation ba
       <div class="body"></div>
     </div>
     <div id="hierarchy" class="tab-pane fade">
-      <div w3-include-html="https://ugamoako.github.io/tree"></div>
+      <iframe src="https://ugamoako.github.io/tree" height="800px" width="1200px">
+            Alternative text for browsers that do not understand IFrames.
+        </iframe>
     </div>
     <div id="frequency" class="tab-pane fade">
       <h3>Frequency</h3>
     </div>
-    <script>
-        w3.includeHTML();
-    </script>
   </div>
 </html>
