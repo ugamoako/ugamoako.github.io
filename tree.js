@@ -1,4 +1,5 @@
 
+alert("this is so annoying");
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
     width = 1200 - margin.right - margin.left,
     height = 800 - margin.top - margin.bottom;
