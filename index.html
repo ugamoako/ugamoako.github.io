@@ -9,9 +9,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!--script(src='/javascripts/data.js')--><!--script(src='/javascripts/datatwo.js')-->
         <script src="script.js"></script>
-        <script src="moment-with-locales.js">
-        </script><script src="bootstrap-datetimepicker.min.js"></script>
-        <!--<script src="/javascripts/pythonconn.js"></script>-->
+        <script src="moment-with-locales.js"></script>
+        <script src="bootstrap-datetimepicker.min.js"></script>
+        <script src="tree.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         </head>
         <body>
@@ -40,16 +40,16 @@ via the search boxes to visualise its existence or frequency in the oracle. Deta
 analysis of the data can be found in the report tab located in the navigation bar or click <a href='/report.jade'> here</a></P></div>
 
 <ul class='nav nav-pills nav-justified'>
-    <li class="active"><a data-toggle="pill" href="#home">Month</a></li>
-    <li><a data-toggle="pill" href="#hierarchy">Hierarchy</a></li>
-    <li><a data-toggle="pill" href="#frequency">Frequency</a></li>
+    <li class="active"><a data-toggle="pill" href="#home">Bubble Chart</a></li>
+    <li><a data-toggle="pill" href="#hierarchy">Tree Chart</a></li>
+    <li><a data-toggle="pill" href="#frequency">Force-Directed Graph</a></li>
 </ul>
 <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
       <div class="body"></div>
     </div>
     <div id="hierarchy" class="tab-pane fade">
-      <h3>Hierarchy</h3>
+      <div class="tree"></div>
     </div>
     <div id="frequency" class="tab-pane fade">
       <h3>Frequency</h3>
