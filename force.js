@@ -31,7 +31,7 @@ d3.json("forces.json", function(error, json) {
       .call(force.drag);
 
   node.append("image")
-      .attr("xlink:href", "globe.png")
+      .attr("xlink:href", "https://ugamoako.github.io/globe.png")
       .attr("x", -8)
       .attr("y", -8)
       .attr("width", 16)
