@@ -1,8 +1,8 @@
 
-console.log('run man!!!!');
+//console.log('run man!!!!');
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
-    width = 1200 - margin.right - margin.left,
-    height = 800 - margin.top - margin.bottom;
+    width = 1150 - margin.right - margin.left,
+    height = 750 - margin.top - margin.bottom;
 
 var i = 0,
     duration = 750,

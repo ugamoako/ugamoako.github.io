@@ -1,5 +1,5 @@
-var width = 960,
-    height = 500
+var width = 1150,
+    height = 750
 
 var svg = d3.select(".force").append("svg")
     .attr("width", width)
