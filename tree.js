@@ -1,6 +1,6 @@
 
 //console.log('run man!!!!');
-var margin = {top: 20, right: 120, bottom: 20, left: 120},
+var margin = {top: 20, right: 20, bottom: 20, left: 20},
     width = 1150 - margin.right - margin.left,
     height = 750 - margin.top - margin.bottom;
 
