@@ -1,141 +1,44 @@
-<!DOCTYPE html><html>
-    <head>
-        <title>Pythia</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="bootstrap-datetimepicker.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.9/d3.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <!--script(src='/javascripts/data.js')--><!--script(src='/javascripts/datatwo.js')-->
-        <script src="script.js"></script>
-        <script src="moment-with-locales.js"></script>
-        <script src="bootstrap-datetimepicker.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        </head>
-        <body>
-            <nav class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container-fluid"><!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" class="navbar-toggle collapsed">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        </button>
-                        <a href="#" class="navbar-brand">Pythia</a>
-                        </div>
-                        <div id="myNavbar" class="collapse navbar-collapse">
-                            <ul class="nav navbar-nav">
-                                <li class="active">
-                                    <a href="/" style="background-color:#1f77b4">Home</a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Filter<span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a href="#">Sort </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="/summary">Table </a>
-                                    </li>
-                                    <li>
-                                        <a href="report.html">Report</a>
-                                    </li>
-                                </ul>
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <input id="filter" type="text" placeholder="Search">
-                                        <i id="filtersubmit" class="fa fa-search"></i>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="glyphicon glyphicon-user">Sign Up</span></a>
-                                    </li>
-                                    <li><a href="#"><span class="glyphicon glyphicon-log-in">Login</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                    <div style="padding:10px 0 0 0" class="container">
-                        <div class="col-lg-1 col-md-1 col-sm-1">
-                            <div class="filter">Filter</div>
-                        </div>
-                        <!--
-                        <div class="col-lg-3 col-md-3 col-sm-4">
-                            <div class="form-group">
-                                <div id="datetimepicker1" class="input-group date">
-                                    <input type="text" class="form-control">
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-4">
-                            <div class="form-group">
-                                <div id="datetimepicker2" class="input-group date">
-                                    <input type="text" class="form-control">
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        -->
-                    <div class="col-lg-3 col-md-3 col-sm-4">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input id="submittext" type="text" placeholder="Enter a Phrase" class="form-control">
-                                <span class="input-group-addon">
-                                    <span id="submitfilt" class="glyphicon glyphicon-search"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-4"></div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <select id="selectcat" style="width:100px; padding:6px" class="form-control">
-                                <option value="1">At most</option><option value="2">At least</option>
-                                <option value="3">top</option><option value="4">equal</option>
-                                <!--option(value='5') between-->
-                            </select>
-                            <input id="fiterByNumber" type="number" value="20" style="width:60px; padding:6px" class="form-control">
-                            <span class="input-group-addon">
-                                    <span id="submitfil" class="glyphicon glyphicon-search"></span>
-                            </span>
-                            <!--input#fiterByNumber2.form-control(type='number' value='20' style='width:60px; padding:6px;')--><!--span.input-group-addonspan#submitfil.glyphicon.glyphicon-search            -->
-                        </div>
-                    </div>
-                </div><!--p Welcome to #{title}--><!--p it was not easy to set this up .container    
-#chart
--->
-<h1>Pyfia Oracle Data Visualization</h1><p>Pythia is an interactive sonic sculpture, analyzing the audience’s speech and interpreting it into 
-absurd or perhaps prophetic messages, the so-called divine glitch. <a href='http://www.sonicartist.me/wp/pythia/'> Read more...</a>
-</p><P>The Visualization below represent the data collected in an eleven month period in the year 2015.
+<!DOCTYPE html><html><head><title>Pythia</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/stylesheets/style.css"><link rel="stylesheet" href="/stylesheets/c3.css"><!--link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.min.css')--><script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.9/d3.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script><!--script(src='/javascripts/data.js')--><!--script(src='/javascripts/datatwo.js')--><script src="/javascripts/c3.js"></script><!--script(src='/javascripts/moment-with-locales.js')--><!--script(src='/javascripts/bootstrap-datetimepicker.min.js')--><!--script(src='/javascripts/pythonconn.js')--><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script></head><body><nav class="navbar navbar-inverse navbar-fixed-top"><div class="container-fluid"><!-- Brand and toggle get grouped for better mobile display --><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand">Pythia</a></div><div id="myNavbar" class="collapse navbar-collapse"><ul class="nav navbar-nav"><li class="active"><a href="/" style="background-color:#1f77b4">Home</a></li><li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle">Filter<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="#">Sort </a></li></ul></li><li><a href="/summary">Table </a></li><li><a href="/report">Report</a></li></ul><ul class="nav navbar-nav navbar-right"><li><input id="filter" type="text" placeholder="Search"><i id="filtersubmit" class="fa fa-search"></i></li><li><a href="#"><span class="glyphicon glyphicon-user">Sign Up</span></a></li><li><a href="#"><span class="glyphicon glyphicon-log-in">Login</span></a></li></ul></div></div></nav><div style="padding:10px 0 0 0" class="container"><!--.col-lg-1.col-md-1.col-sm-1.filter Filter--><!--.col-lg-3.col-md-3.col-sm-4  .form-group
+  .input-group.date#datetimepicker1
+    input.form-control(type='text')
+    span.input-group-addon
+      span.glyphicon.glyphicon-calendar--><!--.col-lg-3.col-md-3.col-sm-4  .form-group
+  .input-group.date#datetimepicker2
+    input.form-control(type='text')
+    span.input-group-addon
+      span.glyphicon.glyphicon-calendar
+--><!--.col-lg-4.col-md-4.col-sm-5.form-group
+  .input-group
+    select#selectcat.form-control(style='width:100px; padding:6px')
+      option(value="1") At most
+      option(value="2") At least
+      option(value='3') top
+      option(value='4') equal
+      //option(value='5') between
+    input#fiterByNumber.form-control(type='number' value='20' style='width:60px; padding:6px')
+    //input#fiterByNumber2.form-control(type='number' value='20' style='width:60px; padding:6px;')
+    span.input-group-addon
+      span#submitfil.glyphicon.glyphicon-search            --></div><h1>Pyfia Oracle Data Visualization</h1><p>Pythia is an interactive sonic sculpture, analyzing the audience’s speech and interpreting it into 
+absurd or perhaps prophetic messages, the so-called divine glitch. <a href='http://www.sonicartist.me/wp/pythia/'> Read more...</a></p><P>The Visualization below represent the data collected in an eleven month period in the year 2015.
 this Visualization is interactive and the user can select in between time periods to analyse the 
 frequency in the words or phrase for such periods. Also, a single word or phrase can be looked up
 via the search boxes to visualise its existence or frequency in the oracle. Detailed report on the
-analysis of the data can be found in the report tab located in the navigation bar or click <a href='/report.jade'> here</a></P></div>
-
-<ul class='nav nav-pills nav-justified'>
-    <li class="active"><a data-toggle="pill" href="#home">Bubble Chart</a></li>
-    <li><a data-toggle="pill" href="#hierarchy">Tree Chart</a></li>
-    <li><a data-toggle="pill" href="#frequency">Force-Directed Graph</a></li>
+analysis of the data can be found in the report tab located in the navigation bar or click <a href='/report.jade'> here</a>
+</P>
+<ul class="nav nav-pills nav-justified">
+    <li class="active"><a a data-toggle="pill" href="#home">Force-Directed Graph</a></li>
+    <li><a a data-toggle="pill" href="#hierarchy">Bubble Chart</a></li>
+    <li><a a data-toggle="pill" href="#size">Tree Chart</a></li>
 </ul>
-<div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-      <div class="body"></div>
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <iframe src="/force" style="width:1200px; height:1000px; border:none; overflow:auto"></iframe>
+        </div>
+        <div id="hierarchy" class="tab-pane fade">
+            <iframe src="/bubble" style="width:1200px; height:1000px; border:none; overflow:auto"></iframe>
+        </div>
+            <div id="size" class="tab-pane fade"><iframe src="/tree" style="width:1200px; height:1000px; border:none; overflow:auto"></iframe>
+        </div>
     </div>
-    <div id="hierarchy" class="tab-pane fade">
-      <iframe src="https://ugamoako.github.io/tree" height="800px" width="1200px" style="border:none">
-            Alternative text for browsers that do not understand IFrames.
-        </iframe>
-    </div>
-    <div id="frequency" class="tab-pane fade">
-      <iframe src="https://ugamoako.github.io/force" height="800" width="1200px" style="border:none"></iframe>
-    </div>
-  </div>
+</body>
 </html>

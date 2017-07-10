@@ -1,3 +1,4 @@
+
 //Constants for the SVG
 var width = 1200,
     height = 1200;
@@ -12,12 +13,12 @@ var force = d3.layout.force()
     .size([width, height]);
 
 //Append a SVG to the body of the html page. Assign this SVG as an object to svg
-var svg = d3.select(".force").append("svg")
+var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
 //Read the data from the mis element
-d3.json("forces.json", function(error, graph) {
+d3.json("/Dataset/forces.json", function(error, graph) {
   if (error) throw error; 
 //var mis = document.getElementById('mis').innerHTML;
 //graph = JSON.parse(mis);
@@ -143,6 +144,39 @@ function connectedNodes() {
         node.style("opacity", 1);
         link.style("opacity", 1);
         toggle = 0;
+    }
+}
+
+var optArray = [];
+for (var i = 0; i < graph.nodes.length - 1; i++) {
+    optArray.push(graph.nodes[i].name);
+}
+optArray = optArray.sort();
+$(function () {
+    $("#search").autocomplete({
+        source: optArray
+    });
+});
+$('#search_submit').click(function(){
+    searchNode()
+});
+function searchNode() {
+    //find the node
+   
+    var selectedVal = document.getElementById('search').value;
+    var node = svg.selectAll(".node");
+    if (selectedVal == "none") {
+        node.style("stroke", "white").style("stroke-width", "1");
+    } else {
+        var selected = node.filter(function (d, i) {
+            return d.name != selectedVal;
+        });
+        selected.style("opacity", "0");
+        var link = svg.selectAll(".link")
+        link.style("opacity", "0");
+        d3.selectAll(".node, .link").transition()
+            .duration(5000)
+            .style("opacity", 1);
     }
 }
 
