@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-var mydatavar = "/Dataset/withIndex.csv";
+var mydatavar = "withIndex.csv";
 var num = $('#fiterByNumber').val();
 var more = 1;
 var term = parseInt(num, 0);

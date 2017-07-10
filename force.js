@@ -13,12 +13,12 @@ var force = d3.layout.force()
     .size([width, height]);
 
 //Append a SVG to the body of the html page. Assign this SVG as an object to svg
-var svg = d3.select("body").append("svg")
+var svg = d3.select(".force").append("svg")
     .attr("width", width)
     .attr("height", height);
 
 //Read the data from the mis element
-d3.json("/Dataset/forces.json", function(error, graph) {
+d3.json("forces.json", function(error, graph) {
   if (error) throw error; 
 //var mis = document.getElementById('mis').innerHTML;
 //graph = JSON.parse(mis);
