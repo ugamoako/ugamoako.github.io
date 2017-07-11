@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 //Constants for the SVG
-var width = 1200,
+var width = 1250,
     height = 1200;
 
 //Set up the colour scale

@@ -63,7 +63,7 @@ var term = parseInt(num, 0);
         //});
 function mygrah(param){
     
-    var width = 1200,
+    var width = 1250,
     height = 1000,
     padding = 1.5, // separation between same-color nodes
     clusterPadding = 6, // separation between different-color nodes
