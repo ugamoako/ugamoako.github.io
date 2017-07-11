@@ -1,4 +1,4 @@
-
+$( document ).ready(function() {
 //Constants for the SVG
 var width = 1200,
     height = 1200;
@@ -180,4 +180,5 @@ function searchNode() {
     }
 }
 
+});
 });
