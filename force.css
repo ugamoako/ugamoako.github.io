@@ -1,3 +1,7 @@
+.force{
+  position: relative;
+  margin: 0 auto;
+}
 .link{
         stroke: green;
         stroke-width: 0.2px;
