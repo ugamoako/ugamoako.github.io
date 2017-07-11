@@ -1,3 +1,7 @@
+body{
+  position: relative;
+  margin: 0 auto;
+}
 .force{
   position: relative;
   margin: 0 auto;
