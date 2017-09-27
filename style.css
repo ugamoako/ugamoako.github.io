@@ -29,6 +29,7 @@ button{
     border: solid 1px #F1EFEF;
     padding: 10px;
     margin: 10px;
+    min-height: 120px;
 }
 .quote-title{
     font-size: 25px;
