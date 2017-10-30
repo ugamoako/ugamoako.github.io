@@ -23,7 +23,23 @@
         <button class="btn-change" type="button" onclick="rea()">
             Change Quote Of the Day
         </button>
+        <button class="btn-sort" type="button" onclick="sort()">
+                Sort Quotes
+        </button>
+        <select id="author_slct" onchange="filterfunc()">
+
+        </select>
         </div>
+        <div>
+       <!-- <svg id="svgPicture" height="300" width="900">
+            <rect x="20" y="50" height= "50" width="200" fill="red" />
+            <rect x="20" y="100" height= "50" width="200" fill="gold" />
+            <rect x="110" y="114" height= "20" width="20" fill="black" />
+            <rect x="20" y="150" height= "50" width="200" fill="green" />    
+        </svg>
+        </div>-->   
+        <script type="text/javascript" src="d3.js"></script>
         <script type="text/javascript" src="script.js"></script>
+        
     </body>
 </html>
