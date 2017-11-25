@@ -42,3 +42,10 @@ button{
     margin:20px;
     border-color: gray;
 }
+#sortdiv{
+    position: relative;
+    min-height: 300px;
+    border: solid 1px #F1EFEF;
+    padding: 10px;
+    margin: 10px;
+}
