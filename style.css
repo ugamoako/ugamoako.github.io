@@ -1,0 +1,154 @@
+body {
+  font: 12px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*background-color: black;*/
+  
+}
+.header{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  font-size: xx-large;
+  color: #ccc;
+  text-align: center;
+  background-color: #DF1843;
+  position: relative;
+}
+.sideview{
+  position: fixed;
+  left: 0;
+  z-index: 2;
+  background-color: #ccc;
+  text-decoration: none;
+  overflow: auto;
+  height: 100% !important;
+}
+.collection{
+  color: blue;
+  cursor: pointer;
+}
+.collection:hover{
+  background-color: bisque;
+}
+#network{
+ z-index: 1
+}
+line {
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+text{
+  color: black;
+}
+/*li a {color: black;}
+a {
+  color: black;;
+}*/
+li{
+  font-size: 12px;
+  list-style: none;
+  padding-bottom: 6px;
+  padding-left: 40px;
+}
+ul{
+  -webkit-padding-start: 0;
+}
+input{
+  border-radius: 10px;
+  margin: 10px;
+  padding: 3px;
+}
+.ui-to-top {
+  position: fixed;
+  right: 15px;
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+  font-size: 24px;
+  line-height: 58px;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  z-index: 20;
+  transition: .3s all ease;
+  -webkit-transform: translateY(100px);
+  -ms-transform: translateY(100px);
+  transform: translateY(100px);
+  color: #fff;
+  
+  text-decoration: none;
+}
+#ui-to-top{
+  top: 5px;
+  background: #ffc045;
+}
+#ui-to-top1{
+  top: 75px;
+  background-color: #ccc;
+}
+#ui-to-top2{
+  top: 145px;
+  background-color: #DF1843;
+}
+#ui-to-top:hover, #ui-to-top1:hover, #ui-to-top2:hover{
+  color: #fff;
+  background: #000;
+  text-decoration: none;
+}
+/*
+.container{
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
+#chart{
+margin: 0 auto;
+padding: 0;
+float: none;
+text-align: center;
+height: 500px;
+width: 500px;
+position: relative;
+}
+.tooltip {
+  background: #eee;
+  box-shadow: 0 0 5px #999999;
+  color: #333;
+  display: none;
+  font-size: 12px;
+  left: 130px;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  top: 95px;
+  width: 80px;
+  z-index: 10;
+}
+
+  #filter{
+    padding: 0 0 0 5px;
+    margin: 10px 0 0 0;
+    height: 30px;
+    width: 200px;
+  }
+#filtersubmit {
+  position: relative;
+  z-index: 1;
+  left: -25px;
+  top: 1px;
+  color: #7B7B7B;
+  cursor: pointer;
+  width: 0;
+}
+.filter{
+  padding: 10px 0 0 0;
+  font-size: 16px;
+}
+p{
+  text-align: justify;
+  font-size: 14px;
+}
+.input-group-addon{
+  width:0;
+}*/
