@@ -5,7 +5,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.engine('.html', require('ejs').__express);
 app.set('view engine', 'html');
 app.get('/', function (req, res) {
-  res.render('homework3a')
+  res.render('homework4a')
+})
+app.get('/hw4b', function (req, res){
+  res.render('homework4b')
+})
+app.get('/hw4', function (req, res){
+  res.render('homework4a')
 })
 app.get('/hw3', function (req, res){
   res.render('homework3b')
