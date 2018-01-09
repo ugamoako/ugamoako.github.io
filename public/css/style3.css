@@ -195,10 +195,6 @@ h3 {
   font-size: 32px;
 }
 
-.lineChart {
-  stroke-dasharray: 1, 4;
-  color: #C0C0C0
-}
 
 .label {
   font-size: 11px;
