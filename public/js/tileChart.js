@@ -81,7 +81,8 @@ class TileChart {
     d3.select("#tileArea").remove();
     var self = this;
 
-    let tip = d3.tip().attr('class', 'd3-tip')
+    let tip = d3.tip()
+      .attr('class', 'd3-tip')
       .direction('ne')
       .offset(function() {
         return [-10, -20];
