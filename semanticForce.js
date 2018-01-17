@@ -84,7 +84,7 @@ function drawgraph(nodes, links){
             circle.attr('cx', function(d) {return d.x})
                 .attr('cy', function(d) {return d.y})
                 .call(force.drag)
-                .on('click', connectednodes);
+                .on('dblclick', connectednodes);
 
             link.attr('x1', function(d){return d.source.x;})
                 .attr('y1', function(d){return d.source.y;}) 
