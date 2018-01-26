@@ -39,9 +39,11 @@
                         </div>
                     </div>
                 </div>
-                <div id="ui-to-top" data-toggle="modal" data-target="#presentation" class="ui-to-top">P</div>
-                <a id="ui-to-top1" data-toggle="modal" data-target="#report" class="ui-to-top">R</a>
-                <a id="ui-to-top2" data-toggle="modal" data-target="#summary" class="ui-to-top">T</a>
+                <div id="ui-to-top" data-toggle="modal" data-tooltip="tooltip" title="Presentation" data-target="#presentation" class="ui-to-top">P</div>
+                <a id="ui-to-top1" data-toggle="modal" data-tooltip="tooltip" title="Report" data-target="#report" class="ui-to-top">R</a>
+                <a id="ui-to-top2" data-toggle="modal" data-tooltip="tooltip" title="Manuscript" data-target="#summary" class="ui-to-top">M</a>
+                <a id="ui-to-top3" data-toggle="modal" data-tooltip="tooltip" title="Table View" data-target="#tableView" class="ui-to-top">T</a>
+                <ul id="ui-to-buttom"></ul>
                 <div id="presentation" role="dialog" class="modal fade">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -71,12 +73,26 @@
                     </div>
                 </div>
             </div>
-            <div id="summary" role="dialog" class="modal fade">
+            <div id="manuscript" role="dialog" class="modal fade">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" data-dismiss="modal" class="close">&times;</button>
-                            <h4 id="sumtitle" class="modal-title">Summary</h4>
+                            <h4 id="sumtitle" class="modal-title">Manuscript</h4>
+                        </div>
+                        <div id="sumtext" class="modal-body"></div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tableView" role="dialog" class="modal fade">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" data-dismiss="modal" class="close">&times;</button>
+                            <h4 id="sumtitle" class="modal-title">Table View</h4>
                         </div>
                         <div id="sumtext" class="modal-body"></div>
                         <div class="modal-footer">

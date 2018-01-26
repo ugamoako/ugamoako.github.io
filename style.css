@@ -3,6 +3,7 @@ body {
   /*background-color: black;*/
   
 }
+
 .header{
   position: fixed;
   top: 0;
@@ -13,10 +14,25 @@ body {
   color: #ccc;
   text-align: center;
   background-color: #DF1843;
-  position: relative;
 }
+td, th { 
+  padding: 4px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
+}
+
+th.des:after {
+  font-size: 10px;
+    content: "\25b2";
+  }
+  
+  th.aes:after {
+    font-size: 10px;
+    content: "\25bc";
+  }
 .sideview{
   position: fixed;
+  top: 35px;
   left: 0;
   z-index: 2;
   background-color: #ccc;
@@ -24,11 +40,12 @@ body {
   overflow: auto;
   height: 100% !important;
 }
+
 .collection{
   color: blue;
   cursor: pointer;
 }
-.collection:hover{
+li:hover{
   background-color: bisque;
 }
 #network{
@@ -36,10 +53,15 @@ body {
 }
 line {
   stroke: #ccc;
-  stroke-width: 1.5px;
 }
 text{
-  color: black;
+  color: #ffc045;
+}
+circle{
+  fill: #ccc;
+}
+#words{
+  margin: 10px;
 }
 /*li a {color: black;}
 a {
@@ -49,7 +71,8 @@ li{
   font-size: 12px;
   list-style: none;
   padding-bottom: 6px;
-  padding-left: 40px;
+  padding-left: 20px;
+  cursor: pointer;
 }
 ul{
   -webkit-padding-start: 0;
@@ -76,7 +99,6 @@ input{
   -ms-transform: translateY(100px);
   transform: translateY(100px);
   color: #fff;
-  
   text-decoration: none;
 }
 #ui-to-top{
@@ -91,10 +113,40 @@ input{
   top: 145px;
   background-color: #DF1843;
 }
-#ui-to-top:hover, #ui-to-top1:hover, #ui-to-top2:hover{
+#ui-to-top3{
+  top: 215px;
+  background-color: #2C040D;
+}
+#ui-to-top:hover, 
+#ui-to-top1:hover, 
+#ui-to-top2:hover,
+#ui-to-top3:hover{
   color: #fff;
   background: #000;
   text-decoration: none;
+}
+tr:hover td { background-color: #fff; }
+#ui-to-buttom{
+  position: fixed;
+  padding-top: 5px;
+  bottom: 16%;
+  right: 15px;
+  width: 350px;
+  height: 200px;
+  border-radius: 5px;
+  font-size: 12px;
+  overflow: auto;
+  text-align: left;
+  text-decoration: none;
+  z-index: 20;
+  transition: .3s all ease;
+  -webkit-transform: translateY(100px);
+  -ms-transform: translateY(100px);
+  transform: translateY(100px);
+  color: #2C040D;
+  background-color: #ccc;
+  text-decoration: none;
+  opacity: 0.7;
 }
 /*
 .container{
