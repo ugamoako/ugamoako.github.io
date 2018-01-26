@@ -246,12 +246,15 @@ optArray = optArray.sort();
         var isExist = new Set();
         let d = d3.select(this).node().__data__;
         let textLinks = d.split(" ");
-        console.log(d)
         let link = d3.selectAll('.link');
+        let circle = d3.selectAll('.node');
+        console.log('circle passed: ', circle);
+        circle.style("fill", function (o) { return textLinks.indexOf(o.name)> -1? '#DF1843': '#ccc'});
         for(i=0;i<textLinks.length -1; i++){
             link.style("stroke-opacity", function (o) {
                 if(textLinks[i]==o.source.name & textLinks[i+1]==o.target.name){
                     isExist.add(o);
+                    
                     //console.log('is exist>>>', isExist);
                     return 1;
                 }
@@ -265,7 +268,7 @@ optArray = optArray.sort();
                 }
                 //console.log(i.index);
                //console.log('neighbours: ', getNeighboursByNodeId(i.index)); 
-            });
+            }).style('stroke', '#DF1843');
         }
         
        } 
@@ -279,6 +282,7 @@ optArray = optArray.sort();
                 return d.name != selectedVal;
             });
             selected.style("opacity", "0");
+            node.style('fill', '#DF1843');
             var link = d3.selectAll(".link")
                 link.style("opacity", "0");
             
@@ -287,6 +291,7 @@ optArray = optArray.sort();
     function deSelectNode(){
         d3.selectAll(".node, .link").transition()
                 .duration(500)
+                .style('fill', '#ccc')
                 .style("opacity", 1);
     }
     
