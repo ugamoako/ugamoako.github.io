@@ -138,7 +138,7 @@ tr:hover td { background-color: #fff; }
   overflow: auto;
   text-align: left;
   text-decoration: none;
-  z-index: 20;
+  z-index: 19;
   transition: .3s all ease;
   -webkit-transform: translateY(100px);
   -ms-transform: translateY(100px);
