@@ -1,4 +1,4 @@
-var width = window.innerWidth,
+var width = 1000,
 height = window.innerHeight;
 
 let sidelab = [];
@@ -102,8 +102,28 @@ var label = node.append("text")
      }  
       
 }
-    
+let toggleTable = false;        
+function tableView(){
+var filterlist = d3.select("#ui-to-buttom");
+if(!toggleTable){
+    $('#ui-to-buttom').css({'height':'500px', 'opacity':1});
+    filterlist.selectAll('li').remove();
+    filterlist.selectAll('li')
+        .data(rawdata)
+        .enter()
+        .append('li')
+        .text(function(d){return d})
+        .on('mouseover', highlighConnection);
+    toggleTable = true;
+} else {
+    filterlist.selectAll('li').remove();
+    d3.select('svg').remove();
+    createJson(rawdata); 
+    $('#ui-to-buttom').css({'height':'200px', 'opacity':0.7});
+    toggleTable = false;
+}
 
+}
 function populateTranscriptView(data){
     var sortAscending = true;
     var table = d3.select('#words').append('table');
@@ -191,7 +211,7 @@ function populateTranscriptView(data){
             
             return e.match(d);
         });
-        console.log('modify text is called.', myrawdata);
+        //console.log('modify text is called.', myrawdata);
         let modalhead = document.getElementById('title');
             modalhead.innerHTML = d;
         var filterlist = d3.select("#ui-to-buttom");
