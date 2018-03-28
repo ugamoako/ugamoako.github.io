@@ -1,18 +1,24 @@
 var width = 1000,
 height = window.innerHeight;
-
+let rawdata;
 let sidelab = [];
 let optArray = [];     
 var toggle = 0;
 
+d3.csv("pattern.csv", function(d) {
+    //populateTranscriptView(d);
+    //console.log(d);
+    rawdata = d;
+    createJson(d);
+});
 
-createJson(rawdata);
 function createJson(data){
 let nodes = {};
 let newLinks = [];
 new Promise((resolve, reject) => {
     data.forEach(function(a){
-        let xy = a.split(' ');
+        //console.log(a.name);
+        let xy = a.name.split(' ');
         for(i =0; i < xy.length -1; i++){
             var newLink = {};
             newLink["source"] = xy[i];
@@ -49,7 +55,7 @@ var svg = d3.select('#network').append('svg')
     .attr('height', height);
 var force = d3.layout.force()
     .size([width, height])
-    .charge(-80)
+    .charge(-200)
     .nodes(d3.values(nodes))
     .links(links)
     .on("tick", tick)
@@ -65,15 +71,16 @@ var link = svg.selectAll('.link')
         return Math.sqrt(d.source.weight * 0.01);
     });
     //.style("stroke", function(d) { return colorScale(1);}); 
-   console.log(links);
+   //console.log(links);
 var node = svg.selectAll('.node')
     .data(force.nodes())
     .enter();  
 var circle = node.append('circle')
     .attr('class', 'node')
     .attr('r', function(d) {
-        const r = width * 0.001 * d.weight;
+        let r = width * 0.001 * d.weight;
         const i = width * 0.004;
+        if(r > 10){r = 10};
         return r > i ? r: i;
     });  
     
@@ -112,7 +119,7 @@ if(!toggleTable){
         .data(rawdata)
         .enter()
         .append('li')
-        .text(function(d){return d})
+        .text(function(d){return d.name})
         .on('mouseover', highlighConnection);
     toggleTable = true;
 } else {
@@ -200,7 +207,7 @@ function populateTranscriptView(data){
 
 
     function modifyText(d){
-        if(d.length < 4){ d+= ' '}
+        //if(d.length < 4){ d+= ' '}
         //let textid = d.split(" ");
         console.log('modify text is called.', d);
         function checkOneNode(rawdata) {
@@ -209,7 +216,7 @@ function populateTranscriptView(data){
         }
         let myrawdata = rawdata.filter(function(e){
             
-            return e.match(d);
+            return e.name.match(d);
         });
         //console.log('modify text is called.', myrawdata);
         let modalhead = document.getElementById('title');
@@ -220,7 +227,7 @@ function populateTranscriptView(data){
             .data(myrawdata)
             .enter()
             .append('li')
-            .text(function(d){return d})
+            .text(function(d){return d.name})
             .on('mouseover', highlighConnection);
         d3.select('svg').remove();
             
@@ -265,30 +272,36 @@ optArray = optArray.sort();
     function highlighConnection(){
         var isExist = new Set();
         let d = d3.select(this).node().__data__;
-        let textLinks = d.split(" ");
+        let textLinks = d.name.split(" ");
         let link = d3.selectAll('.link');
         let circle = d3.selectAll('.node');
-        console.log('circle passed: ', circle);
+        //console.log('circle passed: ', circle);
         circle.style("fill", function (o) { return textLinks.indexOf(o.name)> -1? '#DF1843': '#ccc'});
         for(i=0;i<textLinks.length -1; i++){
-            link.style("stroke-opacity", function (o) {
+            link.style("stroke", function (o) {
                 if(textLinks[i]==o.source.name & textLinks[i+1]==o.target.name){
                     isExist.add(o);
                     
                     //console.log('is exist>>>', isExist);
-                    return 1;
+                    //return 1;
+                    return '#DF1843';
                 }
                 else {
-                    if(isExist.has(o)){
+                    /*if(isExist.has(o)){
                         return 1;
                     } else {
                         return 0;
+                    }*/
+                    if(isExist.has(o)){
+                        return '#DF1843';
+                    } else {
+                        return '#ccc';
                     }
                     
                 }
                 //console.log(i.index);
                //console.log('neighbours: ', getNeighboursByNodeId(i.index)); 
-            }).style('stroke', '#DF1843');
+            }); //.style('stroke', '#DF1843');
         }
         
        } 
