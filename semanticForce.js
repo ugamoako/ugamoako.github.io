@@ -55,13 +55,19 @@ var svg = d3.select('#network').append('svg')
     .attr('height', height);
 var force = d3.layout.force()
     .size([width, height])
-    .charge(-200)
+    .charge(charge)
+    .gravity(1)
     .nodes(d3.values(nodes))
     .links(links)
     .on("tick", tick)
-    .linkDistance(60)
+    .linkDistance(linkdist)
     .start();
-
+function charge(d){
+    return d.weight * d.weight * -0.25;
+}
+function linkdist(d){
+    return Math.sqrt(d.target.weight * d.source.weight * 10);
+}
 var link = svg.selectAll('.link')
     .data(links)
     .enter().append('line')
