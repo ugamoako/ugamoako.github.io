@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 var width = window.innerWidth,
-=======
-var width = window.innerWidth;
->>>>>>> fa2b3ea39c5b0c40701c6a5a7cd97b5894e2c082
 height = window.innerHeight;
 let rawdata = [];
 let sidelab = [];
-<<<<<<< HEAD
 let values = [];
 let optArray = [];     
 var toggle = 0;
@@ -20,13 +15,6 @@ d3.csv("moviezero.csv", function(d) {
      }
     
     })
-=======
-let optArray = [];
-let values = [];     
-var toggle = 0;
-
-d3.csv("rawlist.csv", function(d) {
->>>>>>> fa2b3ea39c5b0c40701c6a5a7cd97b5894e2c082
     //populateTranscriptView(d);
     //console.log(d);
     //rawdata = d;
@@ -82,14 +70,7 @@ new Promise((resolve, reject) => {
         });  
 }
 function drawgraph(nodes, links){
-<<<<<<< HEAD
 var color = d3.scale.category20();
-=======
-    
-    //console.log('nodes: ',nodes)
-   
-
->>>>>>> fa2b3ea39c5b0c40701c6a5a7cd97b5894e2c082
 var colorScale = d3.scale.category10();
 var svg = d3.select('#network').append('svg')
     .attr('width', width)
@@ -97,11 +78,7 @@ var svg = d3.select('#network').append('svg')
 var force = d3.layout.force()
     .size([width, height])
     .charge(charge)
-<<<<<<< HEAD
     .gravity(0.5)
-=======
-    .gravity(2)
->>>>>>> fa2b3ea39c5b0c40701c6a5a7cd97b5894e2c082
     .nodes(d3.values(nodes))
     .links(links)
     .on("tick", tick)
@@ -109,7 +86,6 @@ var force = d3.layout.force()
     .start();
    
 function charge(d){
-<<<<<<< HEAD
 var scalee = d3.scale.linear()
     .domain([1, (10*10)])
     .range([-400,100]); 
@@ -118,16 +94,6 @@ var scalee = d3.scale.linear()
 }
 function linkdist(d){
     return Math.sqrt(d.source.weight);
-=======
-    console.log('charge',d);
-    //console.log(d.weight* d.weight *-5);
-    return d.weight * d.weight*-25;
-}
-function linkdist(d){
-    //console.log(d.source.weight* d.target.weight);
-    //console.log('link distance: ',d);
-    return d.source.weight +20;
->>>>>>> fa2b3ea39c5b0c40701c6a5a7cd97b5894e2c082
 }
 
 var link = svg.selectAll('.link')
@@ -143,63 +109,34 @@ var link = svg.selectAll('.link')
 var node = svg.selectAll('.node')
     .data(force.nodes())
     .enter();  
-<<<<<<< HEAD
  
-=======
->>>>>>> fa2b3ea39c5b0c40701c6a5a7cd97b5894e2c082
     
 var label = node.append("text")
     .attr("dy", ".35em")
     .attr("dx", 8)
     .text(function(d) { 
-<<<<<<< HEAD
         //console.log('data: ', d)
         optArray.push(d.text);
-=======
-        console.log('label');  
-        optArray.push(d.name);
->>>>>>> fa2b3ea39c5b0c40701c6a5a7cd97b5894e2c082
         values.push(d.weight);
         sidelab.push({"name" : d.name, "count" : d.weight});
         return d.name; })
     .style("font-size","9px");
 var scaled = d3.scale.linear()
     .domain([1, d3.max(values)])
-<<<<<<< HEAD
     .range([3,15]);  
-=======
-    .range([3,15]); 
->>>>>>> fa2b3ea39c5b0c40701c6a5a7cd97b5894e2c082
 var circle = node.append('circle')
     .attr('class', 'node')
     .attr('r', function(d) {
         
-<<<<<<< HEAD
         return scaled(d.weight);
-=======
-        //console.log('scaled',scaled(d.weight));
-        return scaled(d.weight);        
-        //return scaled
->>>>>>> fa2b3ea39c5b0c40701c6a5a7cd97b5894e2c082
         /*let r = width * 0.001 * d.weight;
         const i = width * 0.004;
         if(r > 10){r = 10};
         return r > i ? r: i;*/
-<<<<<<< HEAD
     });
     /*.style("fill", function (d) {
         return color(d.group);
     });*/
-=======
-    });      
-    console.log('weight: ',values)
-    console.log('max', d3.max(values))
-    console.log('min', d3.min(values))
-    /*values.forEach(e =>{
-        console.log(e);
-    })*/
-    
->>>>>>> fa2b3ea39c5b0c40701c6a5a7cd97b5894e2c082
     function tick(e) {
         circle.attr('cx', function(d) {return d.x})
             .attr('cy', function(d) {return d.y})
