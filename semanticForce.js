@@ -1,15 +1,24 @@
-var width = 1000,
+var width = window.innerWidth,
 height = window.innerHeight;
-let rawdata;
+let rawdata = [];
 let sidelab = [];
+let values = [];
 let optArray = [];     
 var toggle = 0;
 
-d3.csv("pattern.csv", function(d) {
+d3.csv("moviezero.csv", function(d) {
+    rawdata = [];
+    d.forEach(e=>{
+     let dd =  e.text.removeStopWords();
+     if(dd.split(' ').length>1){
+        rawdata.push({name:dd,group:e.name});
+     }
+    
+    })
     //populateTranscriptView(d);
     //console.log(d);
-    rawdata = d;
-    createJson(d);
+    //rawdata = d;
+    createJson(rawdata);
 });
 
 function createJson(data){
@@ -17,15 +26,23 @@ let nodes = {};
 let newLinks = [];
 new Promise((resolve, reject) => {
     data.forEach(function(a){
-        //console.log(a.name);
+        //const regex = /(?:(the|a|an|in|go|is) +)/g;
+        //let str = a.text; 
+        //const subst = ``;
+        //let result = str.removeStopWords();
+        //console.log(result);
         let xy = a.name.split(' ');
-        for(i =0; i < xy.length -1; i++){
-            var newLink = {};
-            newLink["source"] = xy[i];
-            newLink["target"] = xy[i+1];
-           newLinks.push({"source": xy[i], "target":xy[i+1], "value": 1});
+        //console.log('length: ',xy.length)
+        
+            for(i =0; i < xy.length -1; i++){
+                var newLink = {};
+                newLink["source"] = xy[i];
+                newLink["target"] = xy[i+1];
+               newLinks.push({"source": xy[i], "target":xy[i+1],"value":i, "group": a.group});
+    
+            }
 
-        }
+        
     });
     
     resolve();
@@ -33,13 +50,18 @@ new Promise((resolve, reject) => {
 .then(
     () => 
         {
-            newLinks.forEach(function(link) {
-                link.source = nodes[link.source] || 
-                    (nodes[link.source] = {name: link.source});
-                link.target = nodes[link.target] || 
-                    (nodes[link.target] = {name: link.target});
+        newLinks.forEach(function(link) {
+            
+            link.source = nodes[link.source] || (nodes[link.source] = {name: link.source, group:link.group});
+            link.target = nodes[link.target] || (nodes[link.target] = {name: link.target, group:link.group});
                 link.value = +link.value;
+                
             });
+            
+            console.log('links>: ', newLinks);
+            /*nodes.forEach((e)=>{
+                console.log('e', e);
+            })*/
             drawgraph(nodes, newLinks);
            
             
@@ -48,7 +70,7 @@ new Promise((resolve, reject) => {
         });  
 }
 function drawgraph(nodes, links){
-
+var color = d3.scale.category20();
 var colorScale = d3.scale.category10();
 var svg = d3.select('#network').append('svg')
     .attr('width', width)
@@ -56,17 +78,22 @@ var svg = d3.select('#network').append('svg')
 var force = d3.layout.force()
     .size([width, height])
     .charge(charge)
-    .gravity(1)
+    .gravity(0.5)
     .nodes(d3.values(nodes))
     .links(links)
     .on("tick", tick)
     .linkDistance(linkdist)
     .start();
+   
 function charge(d){
-    return d.weight * d.weight * -0.25;
+var scalee = d3.scale.linear()
+    .domain([1, (10*10)])
+    .range([-400,100]); 
+    //console.log('weight: ', d.weight,'charge: ', scalee(d.weight*d.weight));
+    return scalee(d.weight*d.weight);
 }
 function linkdist(d){
-    return Math.sqrt(d.target.weight * d.source.weight * 10);
+    return Math.sqrt(d.source.weight);
 }
 var link = svg.selectAll('.link')
     .data(links)
@@ -81,24 +108,34 @@ var link = svg.selectAll('.link')
 var node = svg.selectAll('.node')
     .data(force.nodes())
     .enter();  
-var circle = node.append('circle')
-    .attr('class', 'node')
-    .attr('r', function(d) {
-        let r = width * 0.001 * d.weight;
-        const i = width * 0.004;
-        if(r > 10){r = 10};
-        return r > i ? r: i;
-    });  
+ 
     
 var label = node.append("text")
     .attr("dy", ".35em")
     .attr("dx", 8)
     .text(function(d) { 
-        optArray.push(d.name);
+        //console.log('data: ', d)
+        optArray.push(d.text);
+        values.push(d.weight);
         sidelab.push({"name" : d.name, "count" : d.weight});
         return d.name; })
     .style("font-size","9px");
-
+var scaled = d3.scale.linear()
+    .domain([1, d3.max(values)])
+    .range([3,15]);  
+var circle = node.append('circle')
+    .attr('class', 'node')
+    .attr('r', function(d) {
+        
+        return scaled(d.weight);
+        /*let r = width * 0.001 * d.weight;
+        const i = width * 0.004;
+        if(r > 10){r = 10};
+        return r > i ? r: i;*/
+    });
+    /*.style("fill", function (d) {
+        return color(d.group);
+    });*/
     function tick(e) {
         circle.attr('cx', function(d) {return d.x})
             .attr('cy', function(d) {return d.y})
@@ -132,7 +169,7 @@ if(!toggleTable){
     filterlist.selectAll('li').remove();
     d3.select('svg').remove();
     createJson(rawdata); 
-    $('#ui-to-buttom').css({'height':'200px', 'opacity':0.7});
+    $('#ui-to-buttom').css({'height':'150px', 'opacity':0.7});
     toggleTable = false;
 }
 
@@ -278,6 +315,8 @@ optArray = optArray.sort();
     function highlighConnection(){
         var isExist = new Set();
         let d = d3.select(this).node().__data__;
+        //let result = d.text.removeStopWords();
+        //console.log(result);
         let textLinks = d.name.split(" ");
         let link = d3.selectAll('.link');
         let circle = d3.selectAll('.node');
