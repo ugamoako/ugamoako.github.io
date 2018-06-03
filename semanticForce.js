@@ -11,7 +11,7 @@ d3.csv("moviezero.csv", function(d) {
     d.forEach(e=>{
      let dd =  e.text.removeStopWords();
      if(dd.split(' ').length>1){
-        rawdata.push({name:dd,group:e.name});
+        rawdata.push({name:dd,group:e.sentiment});
      }
     
     })
@@ -25,7 +25,9 @@ function createJson(data){
 let nodes = {};
 let newLinks = [];
 new Promise((resolve, reject) => {
+    //console.log('m data: ', data)
     data.forEach(function(a){
+        
         //const regex = /(?:(the|a|an|in|go|is) +)/g;
         //let str = a.text; 
         //const subst = ``;
@@ -38,7 +40,7 @@ new Promise((resolve, reject) => {
                 var newLink = {};
                 newLink["source"] = xy[i];
                 newLink["target"] = xy[i+1];
-               newLinks.push({"source": xy[i], "target":xy[i+1],"value":i, "group": a.group});
+               newLinks.push({"source": xy[i], "target":xy[i+1],"value":i, "sentiment": a.group});
     
             }
 
@@ -52,8 +54,8 @@ new Promise((resolve, reject) => {
         {
         newLinks.forEach(function(link) {
             
-            link.source = nodes[link.source] || (nodes[link.source] = {name: link.source, group:link.group});
-            link.target = nodes[link.target] || (nodes[link.target] = {name: link.target, group:link.group});
+            link.source = nodes[link.source] || (nodes[link.source] = {name: link.source, group:link.sentiment});
+            link.target = nodes[link.target] || (nodes[link.target] = {name: link.target, group:link.sentiment});
                 link.value = +link.value;
                 
             });
@@ -120,7 +122,15 @@ var label = node.append("text")
         values.push(d.weight);
         sidelab.push({"name" : d.name, "count" : d.weight});
         return d.name; })
-    .style("font-size","9px");
+    .style("font-size","9px")
+    .style('fill',function(d){
+        if(d.group === 'negative')
+            return '#DF1843'
+        else if(d.group === 'positive')
+            return '#228B22'
+        else 
+            return '#000'       
+        });
 var scaled = d3.scale.linear()
     .domain([1, d3.max(values)])
     .range([3,15]);  
@@ -133,7 +143,15 @@ var circle = node.append('circle')
         const i = width * 0.004;
         if(r > 10){r = 10};
         return r > i ? r: i;*/
-    });
+    })
+    .style('fill',function(d){
+        if(d.group === 'negative')
+            return '#DF1843'
+        else if(d.group === 'positive')
+            return '#228B22'
+        else 
+            return '#000'       
+        });
     /*.style("fill", function (d) {
         return color(d.group);
     });*/
