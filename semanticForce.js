@@ -6,12 +6,12 @@ let values = [];
 let optArray = [];     
 var toggle = 0;
 
-d3.csv("moviezero.csv", function(d) {
+d3.csv("movieone.csv", function(d) {
     rawdata = [];
     d.forEach(e=>{
      let dd =  e.text.removeStopWords();
      if(dd.split(' ').length>1){
-        rawdata.push({name:dd,group:e.sentiment});
+        rawdata.push({author:e.name, name:dd,group:e.sentiment});
      }
     
     })
@@ -181,7 +181,17 @@ if(!toggleTable){
         .data(rawdata)
         .enter()
         .append('li')
-        .text(function(d){return d.name})
+        .text(function(d){
+            console.log('table view >>', d);
+            return d.author+' >> '+d.name})
+        .style('color',function(d){
+            if(d.group === 'negative')
+                return '#DF1843'
+            else if(d.group === 'positive')
+                return '#228B22'
+            else 
+                return '#000'       
+            })
         .on('mouseover', highlighConnection);
     toggleTable = true;
 } else {
@@ -271,7 +281,7 @@ function populateTranscriptView(data){
     function modifyText(d){
         //if(d.length < 4){ d+= ' '}
         //let textid = d.split(" ");
-        console.log('modify text is called.', d);
+        //console.log('modify text is called.', d);
         function checkOneNode(rawdata) {
             //let term = document.getElementById('title').innerHTML;
             return (rawdata.indexOf(d) > -1);
