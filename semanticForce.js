@@ -6,7 +6,7 @@ let values = [];
 let optArray = [];     
 var toggle = 0;
 
-d3.csv("movieone.csv", function(d) {
+d3.csv("moviezero.csv", function(d) {
     rawdata = [];
     d.forEach(e=>{
      let dd =  e.text.removeStopWords();
