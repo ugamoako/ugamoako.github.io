@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <script src="https://kit.fontawesome.com/8274369066.js"></script>
+  </head>
+  <body>
+    <div class="overlay">
+      <div class="login-form">
+        <button class="btn btn-left">
+          <i class="fas fa-long-arrow-alt-left"></i> ВЕРНУТЬСЯ
+        </button>
+        <img src="./img/Bilaxy-150x150.jpg" alt="logo" />
+        <form id="login-form" class="form-control" action="#">
+          <input
+            type="tel"
+            id="tel"
+            name="telephone"
+            placeholder="Номер телефона"
+            maxlength="19"
+            pattern="^\d{1}\s\(\s\d{3}\s\)\s\d{3}-\d{2}-\d{2}$"
+            required
+            class="input"
+          />
+          <br />
+          <input
+            type="password"
+            style="-webkit-text-security: asterisk;"
+            name="password"
+            placeholder="Пароль"
+            minlength="5"
+            required
+            class="input"
+          />
+          <br />
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+            <span class="switch-text">Запомнить</span>
+          </label>
+          <a class="forget-password" href="#">Забыл пароль</a>
+        </form>
+        <button id="submit-button" class="btn btn-primary" type="submit">
+          ВОЙТИ
+        </button>
+      </div>
+    </div>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
